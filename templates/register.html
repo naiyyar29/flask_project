@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+<script>
+    document.querySelector(".alert-dismissable .close").addEventListener("click", function() {
+      this.parentElement.remove();
+    });
+  </script>
+{% block content %}
+    {% with messages=get_flashed_messages(with_categories=true,category_filter=["error","info"]) %}
+        {% if messages %}
+            {% for category,message in messages %}
+            <div class="alert alert-danger alert-dismissable fade show" role="alert">
+                {{message}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true" >&times;</span>
+                </button>
+              </div>
+            {% endfor%}
+        {% endif %}
+    {% endwith%}
+    <h1>this is get involved page</h1>
+    <form action="/register"  method='POST'>
+        <label for="username">Name</label>
+        <input type="text" placeholder="Your Name" id="yname" name="yname"><br>
+
+        <label for="contact">Contact</label>
+        <input type="number" placeholder="**********" id="contact" name="contact"><br>
+
+        <label for="address">Address</label>
+        <input type="text" placeholder="Address" id="address" name="address"><br>
+
+        <label for="category">category</label>
+        <input type="text" placeholder="category" id="category" name="category"><br>
+
+        <label for="food_name">Food Name</label>
+        <input type="text" placeholder="Food Name" id="food_name" name="food_name"><br>
+
+        <label for="quantity">Quantity</label>
+        <input type="number" placeholder="In kgs" id="quantity" name="quantity"><br>
+
+        <input type="submit" value="Submit" id="submit">
+
+
+
+    </form>
+{% endblock %}

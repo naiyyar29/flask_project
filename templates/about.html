@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+<script>
+  document.querySelector(".alert-dismissable .close").addEventListener("click", function() {
+    this.parentElement.remove();
+  });
+</script>
+{% block content %}
+    {% with messages=get_flashed_messages(with_categories=true,category_filter=["error","info"]) %}
+      {% if messages %}
+          {% for category,message in messages %}
+            <div class="alert alert-danger alert-dismissable fade show" role="alert">
+              {{message}}
+              <button type="button" class="btn-close" data-bs-dismiss="alert">
+              <span aria-hidden="true" >&times;</span>
+              </button>
+            </div>
+          {% endfor%}
+      {% endif %}
+    {% endwith%}
+    <h1>this is available food page</h1>
+    <table>
+            <tr> 
+              <th>food name</th>
+              <th>category</th>
+              <th>Quantity(in Kgs)</th>
+              <th>address</th>
+              <th>contact</th>
+              <th>actions</th>
+            </tr>
+        
+            {% for item in items %}
+              <tr>
+                <td>{{ item.food_name}}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{item.address}}</td>
+                <td>{{ item.contact }}</td>
+                <td>
+                    <a href="{{url_for('delete',id=item.id)}}">delete</a>
+                </form>
+                </form>
+                </td>
+              </tr>
+            {% endfor %}
+      </table>
+{% endblock %}
