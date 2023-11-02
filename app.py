@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import stripe
 from flask_migrate import Migrate
 
-stripe.api_key = 'sk_test_51O7wedSEvumAB3djPFdHAiWqvHU818MatNmk8PDmzD39YGyze3iogJBfxFJ0y2P7q9QLcyohljc5F8gGym9XcegR00q8ZVTu2O'
+stripe.api_key = your_stripe_key
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///finalfood.db'
